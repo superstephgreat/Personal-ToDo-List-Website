@@ -317,3 +317,8 @@ h3{
 .task{
   margin-bottom: 1rem;
 }
+
+.soft-disabled {
+  accent-color: grey;
+  opacity: 0.5;         
+}

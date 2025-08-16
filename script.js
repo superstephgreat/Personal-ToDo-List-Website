@@ -9,7 +9,23 @@ const inputTask = document.getElementById('task-input');
 const priorityBtn = document.getElementById('priority-btn');
 const priorityOptions = document.getElementById('priority-options');
 
+function saveTasksToLocalStorage() {
+  const allTasks = [];
 
+  document.querySelectorAll('.task-section').forEach(section => {
+    const sectionName = section.getAttribute('data-section');
+    section.querySelectorAll('.task').forEach(task => {
+      allTasks.push({
+        section: sectionName,
+        text: task.querySelector('p').textContent,
+        priority: task.querySelector('span').textContent,
+        completed: task.querySelector('input[type="checkbox"]').checked
+      });
+    });
+  });
+
+  localStorage.setItem('tasks', JSON.stringify(allTasks));
+}
 let selectedPriority = null;
 let selectedSection = null;
 
@@ -187,6 +203,7 @@ function addTask() {
       sectionTasks.parentElement.remove();
     }
     isTaskListEmpty();
+    saveTasksToLocalStorage();
     
   });
 
@@ -197,10 +214,12 @@ function addTask() {
   checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
       taskText.style.textDecoration = 'line-through';
-      checkbox.disabled = true;
+      checkbox.classList.add('soft-disabled');
     } else {
       taskText.style.textDecoration = 'none';
+      checkbox.classList.remove('soft-disabled')
     }
+    saveTasksToLocalStorage();
   });
 
   taskDiv.appendChild(checkbox);
@@ -210,6 +229,7 @@ function addTask() {
   
   
   insertTaskSorted(sectionTasks, taskDiv, selectedPriority);
+  saveTasksToLocalStorage();
 
   // Reset form
   inputTask.value = '';
@@ -230,6 +250,27 @@ saveBtn.addEventListener('click', () => {
 
 
 
+function loadTasksFromLocalStorage() {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  tasks.forEach(task => {
+    selectedSection = task.section;
+    selectedPriority = task.priority;
+    inputTask.value = task.text;
+    addTask();
+
+    const lastTask = document.querySelector(`.task-section[data-section="${task.section}"] .task:last-child input[type="checkbox"]`);
+    if (task.completed) {
+      lastTask.checked = true;
+      lastTask.classList.add('soft-disabled');
+      lastTask.nextElementSibling.style.textDecoration = 'line-through';
+    }
+  });
+  inputTask.value = '';
+  selectedSection = null;
+  selectedPriority = null;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    isTaskListEmpty();
+  isTaskListEmpty();
+  loadTasksFromLocalStorage();
 });
