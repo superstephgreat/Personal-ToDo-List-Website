@@ -8,7 +8,6 @@ const saveBtn = document.getElementById('save');
 const inputTask = document.getElementById('task-input');
 const priorityBtn = document.getElementById('priority-btn');
 const priorityOptions = document.getElementById('priority-options');
-const describeInput = document.getElementById('describe-input');
 
 
 let selectedPriority = null;
@@ -129,7 +128,7 @@ function getSectionContainer(sectionName) {
     sectionDiv.classList.add('task-section');
     sectionDiv.setAttribute('data-section', sectionName);
 
-    const sectionTitle = document.createElement('h2');
+    const sectionTitle = document.createElement('h3');
     sectionTitle.textContent = sectionName;
     sectionDiv.appendChild(sectionTitle);
 
@@ -166,7 +165,7 @@ function insertTaskSorted(sectionTasks, taskDiv, priority) {
 // Add task function
 function addTask() {
   if (!inputTask.value || !selectedPriority || !selectedSection) return;
-
+  
   const sectionTasks = getSectionContainer(selectedSection);
 
   const taskDiv = document.createElement('div');
@@ -175,8 +174,6 @@ function addTask() {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   
-  const taskDescription = document.createElement('p');
-  taskDescription.textContent = describeInput.value
 
   const taskText = document.createElement('p');
   taskText.textContent = inputTask.value;
@@ -190,6 +187,7 @@ function addTask() {
       sectionTasks.parentElement.remove();
     }
     isTaskListEmpty();
+    
   });
 
   const priorityCategory = document.createElement('span');
@@ -207,7 +205,6 @@ function addTask() {
 
   taskDiv.appendChild(checkbox);
   taskDiv.appendChild(taskText);
-  taskDiv.appendChild(taskDescription);
   taskDiv.appendChild(deleteTask);
   taskDiv.appendChild(priorityCategory);
   
@@ -216,7 +213,6 @@ function addTask() {
 
   // Reset form
   inputTask.value = '';
-  describeInput.value =''
   selectedPriority = null;
   priorityBtn.textContent = 'Select Priority';
   selectedSection = null;
@@ -227,7 +223,7 @@ function addTask() {
 }
 // Save button click
 saveBtn.addEventListener('click', () => {
-  
+  console.log('clicked')
   addTask()
   closeForm()
 });

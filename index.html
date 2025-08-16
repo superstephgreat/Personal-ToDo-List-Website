@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -7,15 +7,23 @@
   <title>Personal ToDo List Website</title>
   <link rel="stylesheet" href="style.css" title="" type="" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 </head>
 
 <body>
   <div class="content-wrapper">
 <heading>
-  <h1>Tasks</h1>
+  <h1>Tasks 🗒️</h1>
 
 
-<input type="text" id="search" placeholder="🔍 Search">
+
+  
+   
+  <input type="text" id="search" placeholder="Search tasks..." />
+
 </heading>
 
 
@@ -23,7 +31,7 @@
 
 <div class="tasks-wrapper">
 <div id="no-tasks">
-  <i>🗒️</i>
+<i class="fas fa-file-alt empty-icon"></i>
   <p>No tasks yet</p>
 </div>
 <div id="task-list">
@@ -39,7 +47,7 @@
   <button id="close">x</button>
   <h3>New Task</h3>
   <input type="text" id="task-input" placeholder="Enter task...">
-  <input type="text" id="describe-input" placeholder="Description (optional)">
+
   
  <div class="selectors">
   <div class="priority-selector">

@@ -1,21 +1,14 @@
 
 
-/* ==============================
-   Theme Variables
-============================== */
-:root[data-theme="dark"] {
+
+:root {
   --bg-gradient: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
   --text-color: #fff;
   --input-bg: #1B263B;
   --form-bg: #1B263B;
 }
 
-:root[data-theme="light"] {
-  --bg-gradient: linear-gradient(135deg, #90E0EF, #ADE8F4, #CAE0F8);
-  --text-color: #000;
-  --input-bg: #fff;
-  --form-bg: #f9f9f9;
-}
+
 
 /* ==============================
    Reset
@@ -46,18 +39,13 @@ h1 {
   font-size: 1.5rem;
 }
 
-#search {
-  position: fixed;
-  top: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
+.search-container {
+  position: relative;
   width: 90%;
-  padding: 1rem;
-  border-radius: 1em;
-  border: none;
-  outline: none;
-  font-size: 1rem;
+  margin: 1rem auto 0 auto;
 }
+
+
 
 /* ==============================
    Tasks Wrapper
@@ -80,6 +68,20 @@ h1 {
   position: relative;
 }
 
+#search{
+  position: fixed;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 1rem;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+
 /* Empty state: center #no-tasks */
 .tasks-wrapper.empty {
   display: flex;
@@ -96,6 +98,12 @@ h1 {
   font-size: 1.2rem;
   color: var(--text-color);
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#no-tasks i{
+  font-size: 4rem;
 }
 
 /* ==============================
@@ -301,3 +309,11 @@ h1 {
 .priority.high { background: #ff4d4d; color: #fff; }
 .priority.medium { background: #ffb84d; color: #fff; }
 .priority.low { background: #4dff88; color: #fff; }
+
+h3{
+  margin: 1rem;
+}
+
+.task{
+  margin-bottom: 1rem;
+}
