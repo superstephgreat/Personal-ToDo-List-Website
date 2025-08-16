@@ -10,6 +10,7 @@ const priorityBtn = document.getElementById('priority-btn');
 const priorityOptions = document.getElementById('priority-options');
 const describeInput = document.getElementById('describe-input');
 
+
 let selectedPriority = null;
 let selectedSection = null;
 
@@ -38,9 +39,10 @@ searchInput.addEventListener('input', () => {
     section.style.display = anyVisible ? 'block' : 'none';
   });
 
+isTaskListEmpty()
   // Show "No tasks" message if nothing matches
-  const anyTasksVisible = document.querySelectorAll('.task:visible').length > 0;
-  noTasksMsg.style.display = anyTasksVisible ? 'none' : 'block';
+const anyTasksVisible = Array.from(document.querySelectorAll('.task')).some(task => task.offsetParent !== null);
+noTasksMsg.style.display = anyTasksVisible ? 'none' : 'block';
 });
 
 const sectionBtn = document.getElementById('section-btn');
@@ -62,24 +64,36 @@ sectionOptions.querySelectorAll('li').forEach(option => {
 });
 
 // Show "No tasks" message if task list empty
+// Update "No tasks" message and add/remove 'empty' class
 function isTaskListEmpty() {
+  // Check if any task is visible
+  const tasksWrapper = document.querySelector('.tasks-wrapper');
   const tasks = document.querySelectorAll('.task');
-  noTasksMsg.style.display = tasks.length === 0 ? 'block' : 'none';
+  const anyVisible = Array.from(tasks).some(task => task.offsetParent !== null);
+
+  if (anyVisible) {
+    noTasksMsg.style.display = 'none';
+    tasksWrapper.classList.remove('empty'); // remove empty class
+  } else {
+    noTasksMsg.style.display = 'flex';
+    tasksWrapper.classList.add('empty'); // add empty class
+  }
 }
-isTaskListEmpty();
 
 // Open/close task form
 add.addEventListener('click', () => {
-  taskForm.style.display = 'block';
+  
+  taskForm.classList.add('active');
   add.style.display = 'none';
 });
 
 function closeForm(){
-  taskForm.style.display = 'none';
+  taskForm.classList.remove('active');
   add.style.display = 'block';
 }
 
 close.addEventListener('click', () => {
+  
   closeForm()
 });
 
@@ -216,4 +230,10 @@ saveBtn.addEventListener('click', () => {
   
   addTask()
   closeForm()
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    isTaskListEmpty();
 });

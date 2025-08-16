@@ -1,57 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Personal ToDo List Website</title>
+  <link rel="stylesheet" href="style.css" title="" type="" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<h1>Tasks</h1>
+  <div class="content-wrapper">
+<heading>
+  <h1>Tasks</h1>
 
 
 <input type="text" id="search" placeholder="🔍 Search">
+</heading>
 
 
+  
 
-
-<div id="no-tasks"style="display: none;">
+<div class="tasks-wrapper">
+<div id="no-tasks">
   <i>🗒️</i>
   <p>No tasks yet</p>
-  </div>
+</div>
 <div id="task-list">
- 
-
+  
+  
+</div>
 </div>
 
 
 <button id="add">+</button>
 
-<div id="task-form" style="display: none;">
+<div id="task-form" >
   <button id="close">x</button>
   <h3>New Task</h3>
   <input type="text" id="task-input" placeholder="Enter task...">
   <input type="text" id="describe-input" placeholder="Description (optional)">
   
+ <div class="selectors">
   <div class="priority-selector">
-  <button id="priority-btn">v</button>
-  <ul id="priority-options" class="hidden" >
-    <li data-priority="High">High</li>
-    <li data-priority="Medium">Medium</li>
-    <li data-priority="Low">Low</li>
-  </ul>
-</div>
-<!-- Section selection -->
-<button type="button" id="section-btn">Select Section</button>
-<ul id="section-options" class="hidden">
-  <li data-section="Work">Work</li>
-  <li data-section="Personal">Personal</li>
-  <li data-section="Hobby">Hobby</li>
-</ul>
-  <button id="save" disabled>Save</button>
+    <button id="priority-btn">Select Priority</button>
+    <ul id="priority-options" class="hidden">
+      <li data-priority="High">High</li>
+      <li data-priority="Medium">Medium</li>
+      <li data-priority="Low">Low</li>
+    </ul>
+  </div>
+
+  <div class="section-selector">
+    <button id="section-btn">Select Section</button>
+    <ul id="section-options" class="hidden">
+      <li data-section="Work">Work</li>
+      <li data-section="Personal">Personal</li>
+      <li data-section="Hobby">Hobby</li>
+    </ul>
+  </div>
 </div>
 
+  <button id="save" disabled>Save</button>
+</div>
+</div>
 
 
 <script src="script.js" type="text/javascript" charset="utf-8"></script>

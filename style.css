@@ -1,0 +1,303 @@
+
+
+/* ==============================
+   Theme Variables
+============================== */
+:root[data-theme="dark"] {
+  --bg-gradient: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+  --text-color: #fff;
+  --input-bg: #1B263B;
+  --form-bg: #1B263B;
+}
+
+:root[data-theme="light"] {
+  --bg-gradient: linear-gradient(135deg, #90E0EF, #ADE8F4, #CAE0F8);
+  --text-color: #000;
+  --input-bg: #fff;
+  --form-bg: #f9f9f9;
+}
+
+/* ==============================
+   Reset
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem; /* space for header + search */
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ==============================
+   Header & Search
+============================== */
+h1 {
+  position: fixed;
+  top: 1rem;
+  left: 5%;
+  font-size: 1.5rem;
+}
+
+#search {
+  position: fixed;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  padding: 1rem;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* ==============================
+   Tasks Wrapper
+============================== */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 1rem;
+  min-height: calc(100vh - 8rem);
+}
+
+.tasks-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 200px;
+  position: relative;
+}
+
+/* Empty state: center #no-tasks */
+.tasks-wrapper.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  text-align: center;
+  flex: 1; 
+}
+
+#no-tasks {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  padding: 2rem;
+}
+
+/* ==============================
+   Add Task Button
+============================== */
+#add {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 2rem;
+  border: none;
+  background: var(--text-color);
+  font-weight: 100;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================
+   Task Form
+============================== */
+#task-form {
+  position: fixed;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 400px;
+  background: var(--form-bg);
+  border-radius: 12px 12px 0 0;
+  padding: 1.5rem 1rem 2rem 1rem;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: bottom 0.4s ease, opacity 0.4s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#task-form.active {
+  bottom: 0;
+  opacity: 1;
+}
+
+/* Close button */
+#task-form #close {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Form title */
+#task-form h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+/* Inputs */
+#task-form input[type="text"] {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+
+#task-form input[type="text"]:focus {
+  border-color: #0077ff;
+}
+
+/* ==============================
+   Selectors Container
+============================== */
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Buttons */
+#priority-btn, #section-btn {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+}
+
+#priority-btn:hover, #section-btn:hover {
+  border-color: #0077ff;
+}
+
+/* ==============================
+   Dropdowns
+============================== */
+#priority-options, #section-options {
+  position: relative; 
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0 0;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#priority-options li, #section-options li {
+  padding: 0.7rem;
+  cursor: pointer;
+  color: black;
+}
+
+#priority-options li:hover, #section-options li:hover {
+  background: #f0f0f0;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* ==============================
+   Save Button
+============================== */
+#save {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #0077ff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#save:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#save:not(:disabled):hover {
+  background-color: #005fcc;
+}
+
+/* ==============================
+   Task Items
+============================== */
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.task input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.task button {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.priority {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.priority.high { background: #ff4d4d; color: #fff; }
+.priority.medium { background: #ffb84d; color: #fff; }
+.priority.low { background: #4dff88; color: #fff; }
