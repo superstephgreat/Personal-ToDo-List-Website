@@ -10,9 +10,7 @@
 
 
 
-/* ==============================
-   Reset
-============================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -23,15 +21,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem; /* space for header + search */
+  padding-top: 8rem; 
   background: var(--bg-gradient);
   color: var(--text-color);
   font-family: 'Poppins', sans-serif;
 }
 
-/* ==============================
-   Header & Search
-============================== */
+
 h1 {
   position: fixed;
   top: 1rem;
@@ -47,9 +43,7 @@ h1 {
 
 
 
-/* ==============================
-   Tasks Wrapper
-============================== */
+
 .content-wrapper {
   flex: 1;
   display: flex;
@@ -82,7 +76,7 @@ h1 {
 }
 
 
-/* Empty state: center #no-tasks */
+
 .tasks-wrapper.empty {
   display: flex;
   flex-direction: column;
@@ -106,9 +100,7 @@ h1 {
   font-size: 4rem;
 }
 
-/* ==============================
-   Add Task Button
-============================== */
+
 #add {
   position: fixed;
   bottom: 1.5rem;
@@ -127,9 +119,7 @@ h1 {
   justify-content: center;
 }
 
-/* ==============================
-   Task Form
-============================== */
+
 #task-form {
   position: fixed;
   bottom: -100%;
@@ -154,7 +144,7 @@ h1 {
   opacity: 1;
 }
 
-/* Close button */
+
 #task-form #close {
   align-self: flex-end;
   background: transparent;
@@ -164,14 +154,14 @@ h1 {
   color: #fff;
 }
 
-/* Form title */
+
 #task-form h3 {
   text-align: center;
   margin-bottom: 0.5rem;
   color: #fff;
 }
 
-/* Inputs */
+
 #task-form input[type="text"] {
   width: 100%;
   padding: 0.8rem;
@@ -188,9 +178,8 @@ h1 {
   border-color: #0077ff;
 }
 
-/* ==============================
-   Selectors Container
-============================== */
+
+   
 .selectors {
   display: flex;
   flex-direction: column;
@@ -214,9 +203,7 @@ h1 {
   border-color: #0077ff;
 }
 
-/* ==============================
-   Dropdowns
-============================== */
+
 #priority-options, #section-options {
   position: relative; 
   top: 100%;
@@ -244,14 +231,12 @@ h1 {
   background: #f0f0f0;
 }
 
-/* Hidden class */
+
 .hidden {
   display: none;
 }
 
-/* ==============================
-   Save Button
-============================== */
+
 #save {
   width: 100%;
   padding: 0.8rem;
@@ -273,9 +258,7 @@ h1 {
   background-color: #005fcc;
 }
 
-/* ==============================
-   Task Items
-============================== */
+
 .task {
   display: flex;
   align-items: center;
