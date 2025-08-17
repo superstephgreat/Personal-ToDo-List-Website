@@ -126,7 +126,6 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 400px;
   background: var(--form-bg);
   border-radius: 12px 12px 0 0;
   padding: 1.5rem 1rem 2rem 1rem;
@@ -304,4 +303,61 @@ h3{
 .soft-disabled {
   accent-color: grey;
   opacity: 0.5;         
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  #search {
+    font-size: 2rem;
+    padding: 2rem;
+    top: 7rem;
+  }
+
+  #task-form h3 {
+    font-size: 2rem;
+  }
+  
+  #no-tasks i {
+    font-size: 9rem;
+  }
+  #no-tasks p {
+    font-size: 4rem;
+  }
+
+  #task-form input[type="text"],
+  #priority-btn,
+  #section-btn,
+  #save {
+    font-size: 1.5rem;
+    padding: 2rem;
+  }
+  
+ .task-section{
+   margin-top: 7rem;
+   font-size: 1.5rem;
+ }
+
+  .task {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .priority {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  #add {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+    bottom: 4rem;
+    right: 4rem;
+  }
+  #task-form #close{
+    font-size: 2rem;
+  }
 }
